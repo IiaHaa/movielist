@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Edit movie</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	
+	<body style="font-family: Arial">
+		<div>
+			<h1>Edit movie</h1>
+			 <form th:object="${editmovie}" th:action="@{../save}" action="#" method="post">
+			 <input type="hidden" id="id" th:field="*{id}" />
+			 <table>
+			  <tr>
+			  	<td>
+				  	<label for="title">Title</label>
+				  	<input type="text" id="title" th:field="*{title}" />
+			  	</td>
+			  	<td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</td>
+			  </tr>
+			  <tr>
+			  	<td>
+			  		<label for="movieYear">Year</label>
+					<input type="number" id="movieYear" th:field="*{movieYear}" />
+			  	</td>
+			  	<td th:if="${#fields.hasErrors('movieYear')}" th:errors="*{movieYear}">Error</td>
+			  </tr>
+			  <tr>
+			  	<td>
+			  		<label for="category">Category</label>
+					<select id="category" th:field="*{category}" class="form-control">
+					<option th:each="category: ${categories}"
+							th:value="${category.categoryid}"
+							th:text="${category.name}">
+					</option>
+					</select>
+			  	</td>
+			  </tr>
+			  <tr>
+			  	<td>
+			  		<label for="movietype">Type</label>
+					<select id="movietype" th:field="*{movietype}" class="form-control">
+					<option th:each="movietype: ${types}"
+							th:value="${movietype.typeid}"
+							th:text="${movietype.name}">
+					</option>
+				</select>
+			  	</td>
+			  </tr>
+			  <tr>
+			  	<td>
+			  		<label for="rating">Rating</label>
+					<input type="number" th:field="*{rating}" />
+			  	</td>
+			  	<td th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Error</td>
+			  </tr>
+			 </table>
+				<input type="submit" value="Save"></input>
+			 </form>
+		</div>
+				<div>
+			<p>
+				<a th:href="@{/listmovies/}">Back to the list</a>
+			</p>
+		</div>
+	</body>
+</html>
