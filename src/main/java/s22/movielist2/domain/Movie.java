@@ -1,5 +1,6 @@
 package s22.movielist2.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,9 @@ public class Movie {
 	@Size(min=1, max=70, message="Name the movie")
 	private String title;
 	
+	@JoinColumn(name = "movieyear")
 	@Range(min=1888, max=2022, message="Year must be between 1888 and 2022")
+	@Column(name = "movieyear")
 	private int movieYear;
 	
 	@ManyToOne

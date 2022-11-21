@@ -65,7 +65,7 @@ class RepositoryTests {
 	
 	@Test
 	public void addCategory() {
-		Category category = new Category("Horror");
+		Category category = new Category("Comedy");
 		categoryRepository.save(category);
 		assertNotNull(category.getCategoryid());
 	}
