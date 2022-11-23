@@ -20,7 +20,7 @@ public class Movie {
 	private Long id;
 	
 	@NotNull
-	@Size(min=1, max=70, message="Name the movie")
+	@Size(min=1, max=70, message="Name the movie or series")
 	private String title;
 	
 	@JoinColumn(name = "movieyear")

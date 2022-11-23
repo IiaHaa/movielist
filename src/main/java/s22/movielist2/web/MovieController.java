@@ -41,6 +41,7 @@ public class MovieController {
 	}
 	
 	// Add a new movie
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/addmovie")
 	public String addMovie(Model model) {
 		model.addAttribute("movie", new Movie());
@@ -81,6 +82,7 @@ public class MovieController {
 	}
 	
 	// Save edited movie
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/save")
 	public String save(Movie movie) {
 		repository.save(movie);
